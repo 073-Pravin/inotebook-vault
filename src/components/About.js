@@ -1,8 +1,8 @@
-import React, { useContext ,useEffect } from 'react'
+import React, { useContext } from 'react'
 import noteContext from '../context.js/notes/noteContext'
 
 export default function  About() {
-  const a =useContext(noteContext)
+  // const a =useContext(noteContext)
   
   return (
     <div>

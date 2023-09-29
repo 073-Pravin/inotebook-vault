@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-export default function Login() {
+export default function Login(props) {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   let history = useHistory();
   const handleClick = async (e) => {
@@ -22,19 +22,20 @@ export default function Login() {
     if (json.success) {
       //
       localStorage.setItem("token", json.authtoken);
+      props.showAlert("Logged in Successfully","success")
       history.push("/");
-      // props.showAlert("Signup Successfully","success")
     } else {
-      // props.showAlert("Invalid Credentials","danger")
+      props.showAlert("Invalid Credentials","danger")
     }
   };
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
   return (
-    <div>
+    <div className="mt-2">
+        <h2 className="my-2">Login to continue iNotebook-Vault</h2>
       <form onSubmit={handleClick}>
-        <div className="mb-3">
+        <div className="my-3">
           <label htmlFor="email" className="form-label">
             Email address
           </label>
